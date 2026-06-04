@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distant Code: Enron Emails Corpus Browser</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-inner">
+                <h1 class="title">📧 ENRON EMAIL CORPUS 📧</h1>
+                <p class="subtitle">Distant Code: A Digital Humanities Interface</p>
+                <p class="tagline">Explore Corporate History & White-Collar Crime Research</p>
+            </div>
+            <div class="enron-badge">
+                <span class="badge-text">EST. 1985</span>
+            </div>
+        </header>
+
+        <!-- NAVIGATION & INFO -->
+        <nav class="info-bar">
+            <div class="info-box">
+                <strong>📌 DATASET INFO</strong><br>
+                <small>Personal Correspondence: Elizabeth Lay ↔ Kenneth Lay via Assistant Rosie Flemming | 1999-2002</small>
+            </div>
+        </nav>
+
+        <!-- SEARCH & FILTER PANEL -->
+        <div class="filter-panel">
+            <h2 class="filter-title">🔍 SEARCH & FILTER</h2>
+
+            <div class="filter-group">
+                <label for="searchInput">🔎 Full Text Search:</label>
+                <input type="text" id="searchInput" placeholder="Search subject, sender, body...">
+            </div>
+
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="filterFrom">From:</label>
+                    <select id="filterFrom">
+                        <option value="">All Senders</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterTo">To:</label>
+                    <select id="filterTo">
+                        <option value="">All Recipients</option>
+                    </select>
+                </div>
+
+                <div class="filter-group checkbox-group">
+                    <label for="filterSaved">Saved in Kenneth Lay's Folder?</label>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="filterSaved">
+                        <span class="checkbox-label">Show only saved emails</span>
+                    </div>
+                </div>
+
+                <div class="filter-group button-group">
+                    <button id="resetBtn" class="btn btn-reset">↻ RESET FILTERS</button>
+                </div>
+            </div>
+
+            <div class="results-counter">
+                Showing <strong id="resultCount">0</strong> of <strong id="totalCount">0</strong> emails
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT AREA -->
+        <div class="content-wrapper">
+            <!-- RESULTS TABLE -->
+            <div class="results-section">
+                <table id="resultsTable" class="email-table">
+                    <thead>
+                        <tr>
+                            <th class="col-date">📅 Date</th>
+                            <th class="col-from">📤 From</th>
+                            <th class="col-to">📥 To</th>
+                            <th class="col-subject">📝 Subject</th>
+                            <th class="col-action">👁️ View</th>
+                        </tr>
+                    </thead>
+                    <tbody id="emailsBody">
+                        <tr><td colspan="5" class="loading">Loading corpus...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="export-link">
+                <a href="#" id="exportLink">💾 Export filtered results as JSON</a>
+            </div>
+        </div>
+
+        <!-- EMAIL VIEWER MODAL -->
+        <div id="emailModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalSubject"></h2>
+                    <button class="close-btn" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-meta">
+                    <p><strong>Message-ID:</strong> <code id="modalMessageId"></code></p>
+                    <p><strong>Date:</strong> <span id="modalDate"></span></p>
+                    <p><strong>From:</strong> <span id="modalFrom"></span></p>
+                    <p><strong>To:</strong> <span id="modalTo"></span></p>
+                    <p><strong>Saved in K.Lay Folder:</strong> <span id="modalSaved" class="saved-badge"></span></p>
+                </div>
+                <div class="modal-body">
+                    <pre id="modalBody"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>DISTANT CODE | A Digital Humanities Project | Data Source: Enron Email Corpus (Kaggle)</p>
+            <p class="footer-small">For research purposes. Elizabeth & Kenneth Lay family correspondence subset.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
