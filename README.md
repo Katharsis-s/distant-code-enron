@@ -2,6 +2,10 @@
 
 A DH-friendly interface for exploring the Elizabeth & Kenneth Lay email correspondence subset from the Enron Emails Corpus.
 
+## Disclaimer 
+
+This is an auto-generated deployment guide created using Claude Haiku 4.5 (via Copilot x VS Code). I cannot guarantee that any words below are my own -- nor am I trying to pass them off as such. If you'd like some original AI-free writing, please refer to my research narrative assignment. Thank you!
+
 ## Overview
 
 **Distant Code** is a digital humanities project designed to make the Enron email corpus accessible to researchers and curious enthusiasts interested in corporate history and white-collar crime. This iteration focuses on personal correspondence between Elizabeth Lay and her father, Kenneth Lay (former CEO of Enron), during the critical years 1999-2002.
