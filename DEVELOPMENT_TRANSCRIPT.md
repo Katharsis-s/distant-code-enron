@@ -45,4 +45,35 @@ During the initial development phase (~4 prompts), the following work was comple
 
 ---
 
+**User (Katharsis-s):** Great, now let's clean a few things up.
+- Replace the "EST. 1985" badge on the top right with another 90s site feature
+- Replace both current subheaders with "Explore a DH-friendly"
+- Here are the exact hexcodes I'd like you to use for the colors. specifically red (#E92A35), Green (#2D9C5C), and Blue (#0083C6), and white and/or grey for the neutral colors
+- Not a huge fan of the word wrap we have going on in the From and To fields. I want it all in one line -- update the widths of all site containers proportionally if need-be
+- For the "Saved in Kenneth Lay's Folder?" search filter. I only want it to be one line (not two), center align to the surrounding boxes and add a box around it for design consistency
+- Something to note: 4/5 emails in the dropdown option of the "From" filter are all Elizabeth Lay. the @enron.com email was during her time working at enron. The lizard_ar@yahoo.com email was her personal, and ealvittor@yahoo.com is her married name personal email. Elizabeth Lay/ENRON DEVELOPMENT is this weird little blip. I don't really know how to categorize it beyond "Other" so there's that. I will expand more when I edit the "Dataset Context" box
+
+**Copilot:** 
+- Replaced "EST. 1985" badge with "⚡ NEW" (classic 90s website feature)
+- Updated subtitle and tagline to "Explore a DH-friendly interface"
+- Applied new color scheme: Red (#E92A35), Green (#2D9C5C), Blue (#0083C6) throughout all UI elements (headers, buttons, borders, badges)
+- Fixed From/To field word-wrap by setting `white-space: nowrap` on table cells and adjusting column widths to 180px
+- Increased container max-width from 1400px to 1600px for proportional layout expansion
+- Styled "Saved in Kenneth Lay's Folder?" filter as single line with centered checkbox wrapper, bordered box, and flexbox centering
+- Increased filter-row grid column minimum from 200px to 250px for better proportions
+- Updated button colors: Reset button now green (#2D9C5C), Export button now blue (#0083C6)
+- Updated all accent colors from original red (#d4254e) to new red (#E92A35) throughout CSS
+- Noted Elizabeth Lay email categorization context for future dataset documentation
+
+---
+
+**User (Katharsis-s):** Sorry, I blanked with updating the subtitle. I do not want a tagline. The Title and sub(title, sorry) should suffice. Update it "Explore Enron Emails With A DH-Friendly Interface"
+
+**Copilot:**
+- Removed tagline paragraph from HTML header
+- Updated subtitle to "Explore Enron Emails With A DH-Friendly Interface"
+- Header now displays only title and subtitle, providing cleaner visual hierarchy
+
+---
+
 *New exchanges will be appended below in chronological order.*
