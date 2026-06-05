@@ -70,7 +70,6 @@ This project uses the **Enron Email Corpus**, a publicly available dataset compi
 - **Corporate Culture**: What do personal emails reveal about company leadership?
 - **Temporal Analysis**: Track date patterns and communication frequency
 - **Network Analysis**: Map relationships between Elizabeth, Kenneth, and Rosie
-- **Crisis Communication**: Study how family communicated during corporate crisis
 - **Distant Coding**: Design a more DH-friendly interface using [distant coding](https://distantcoding.ai/) principles 
 
 ### Export Data for Analysis
