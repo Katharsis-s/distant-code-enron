@@ -4,26 +4,26 @@ A DH-friendly interface for exploring the Elizabeth & Kenneth Lay email correspo
 
 ## Disclaimer 
 
-This is an auto-generated deployment guide created using Claude Haiku 4.5 (via Copilot x VS Code). I cannot guarantee that any words below are my own -- nor am I trying to pass them off as such. If you'd like some original AI-free writing, please refer to my research narrative assignment. Thank you!
+This is an auto-generated deployment guide created using Claude Haiku 4.5 (via Copilot x VS Code). I cannot guarantee that any words below are my own -- nor am I trying to pass them off as such. I did scan and edit it for any eggregious innacuracies. If you'd like some original AI-free writing, please refer to my research narrative assignment. Thank you!
 
 ## Overview
 
-**Distant Code** is a digital humanities project designed to make the Enron email corpus accessible to researchers and curious enthusiasts interested in corporate history and white-collar crime. This iteration focuses on personal correspondence between Elizabeth Lay and her father, Kenneth Lay (former CEO of Enron), during the critical years 1999-2002.
+**Distant Code** is a digital humanities project designed to make the Enron email corpus accessible to researchers and white-collar crime enthusiasts. This iteration focuses on personal correspondence between Elizabeth Lay and her father, Kenneth Lay (former CEO of Enron), during 1999-2002 (a rather critical year for the company). 
 
 ### Data Subset
 
 - **Subject**: Email correspondence between Elizabeth Lay and Kenneth Lay
 - **Time Period**: 1999-2002
-- **Key Figures**: Elizabeth Lay, Kenneth Lay (CEO), Rosie Flemming (assistant)
+- **Key Figures**: Elizabeth Lay (Enron Lawyer), Kenneth Lay (CEO), Rosie Flemming (Executive Assistant)
 - **Data Format**: JSON
 - **Fields**: Message-ID, Date, From, To, Subject, Body, K.Lay Folder Status
 
-### Design Philosophy
+### Design Choices
 
 The interface combines:
 - **90s Aesthetic**: A nostalgic web design that evokes the era when Enron was at its peak
-- **Enron Corporate Branding**: Corporate colors (red, blue) mixed with neon 90s elements
-- **Accessibility**: DH-focused filtering and search capabilities for researchers
+- **Enron Corporate Branding**: Corporate colors (red, blue) mixed with 90s elements
+- **Accessibility**: DH-focused filtering, UX principles, and search capabilities
 
 ## Features
 
@@ -32,7 +32,7 @@ The interface combines:
 ✅ **Email Viewer** - Read full email bodies in a modal interface  
 ✅ **Data Export** - Export filtered results as JSON for further analysis  
 ✅ **Responsive Design** - Works on desktop, tablet, and mobile devices  
-✅ **Static Site** - No backend required, perfect for GitHub Pages
+✅ **Static Site** - No backend required, which is perfect for GitHub Pages
 
 ## Project Structure
 
@@ -46,86 +46,6 @@ distant-code-enron/
 └── .gitignore          # Git ignore rules
 ```
 
-## How to Use Locally
-
-1. **Clone or Download** this repository
-2. **Open** `index.html` in a web browser (or use a local server)
-3. **Search and Filter** emails using the interface
-4. **View** individual emails by clicking the "VIEW" button
-5. **Export** filtered results using the "EXPORT JSON" button
-
-### Using a Local Server
-
-For development, use a local HTTP server:
-
-**Python 3:**
-```bash
-python -m http.server 8000
-```
-
-**Node.js (http-server):**
-```bash
-npx http-server
-```
-
-Then visit `http://localhost:8000` (or the port shown in your terminal).
-
-## Deployment to GitHub Pages
-
-### Step 1: Create a GitHub Repository
-
-1. Go to [github.com](https://github.com) and create a new repository
-2. Name it (e.g., `distant-code-enron`)
-3. Initialize with README or clone the repo locally
-
-### Step 2: Add Project Files
-
-Copy all files from the `distant-code-enron` folder to your GitHub repository:
-- `index.html`
-- `styles.css`
-- `app.js`
-- `data.json`
-- `README.md`
-
-### Step 3: Enable GitHub Pages
-
-1. Go to your repository **Settings**
-2. Scroll to **Pages** section
-3. Set **Source** to `main` branch (or your default branch)
-4. Set **Folder** to `/ (root)`
-5. Click **Save**
-
-### Step 4: Access Your Site
-
-Your site will be available at:
-```
-https://yourusername.github.io/distant-code-enron/
-```
-
-(Replace `yourusername` with your GitHub username and adjust the repo name if different)
-
-## Customization
-
-### Change Colors
-
-Edit `styles.css` to modify the color scheme:
-- `#d4254e` - Primary red (Enron-inspired)
-- `#1a1a2e` - Dark blue (corporate)
-- `#ffff00` - Bright yellow (90s accent)
-- `#00ffff` - Cyan (90s neon)
-
-### Add More Emails
-
-1. Add new email objects to `data.json` following the same format
-2. Refresh the page to see updates
-3. Filters will automatically populate with new senders/recipients
-
-### Modify the Interface
-
-- Edit `index.html` to change layout or labels
-- Edit `app.js` to change filter logic or data handling
-- Edit `styles.css` for visual adjustments
-
 ## Technical Stack
 
 - **HTML5** - Semantic markup
@@ -136,10 +56,10 @@ Edit `styles.css` to modify the color scheme:
 
 ## Data Privacy & Attribution
 
-This project uses the **Enron Email Corpus**, a publicly available dataset compiled from FERC (Federal Energy Regulatory Commission) documents.
+This project uses the **Enron Email Corpus**, a publicly available dataset compiled from the Federal Energy Regulatory Commission (FERC) documents.
 
-- Original Source: [FERC Database](https://www.ferc.gov/)
-- Public Dataset: [Kaggle - Enron Email Dataset](https://www.kaggle.com/datasets/wcukierski/enron-email-dataset)
+- Original Source: [Enron Email Corpus - CALO](https://www.cs.cmu.edu/~enron/)
+- Dataset Used (.CSV): [Kaggle - Enron Email Dataset](https://www.kaggle.com/datasets/wcukierski/enron-email-dataset)
 - **Fair Use**: This is for research, education, and public interest purposes
 
 ## For Digital Humanities Researchers
@@ -151,6 +71,7 @@ This project uses the **Enron Email Corpus**, a publicly available dataset compi
 - **Temporal Analysis**: Track date patterns and communication frequency
 - **Network Analysis**: Map relationships between Elizabeth, Kenneth, and Rosie
 - **Crisis Communication**: Study how family communicated during corporate crisis
+- **Distant Coding**: Design a more DH-friendly interface using [distant coding](https://distantcoding.ai/) principles 
 
 ### Export Data for Analysis
 
@@ -175,7 +96,7 @@ Use the **EXPORT JSON** button to download filtered results for use in:
 
 This project is created for educational and research purposes as part of a Digital Humanities capstone.
 
-The **Enron Email Corpus** is publicly available for research and educational use under Fair Use principles.
+The **Enron Email Corpus** is publicly available for research and educational use under Fair Use principles. Anyone who wanted their info wiped had the opportunity to do so (before I was born). 
 
 ## Questions or Feedback?
 
