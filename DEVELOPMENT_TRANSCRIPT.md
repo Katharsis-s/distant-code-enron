@@ -39,6 +39,8 @@ During the initial development phase (~4 prompts), the following work was comple
 
 ## Transcript Log
 
+*Tool note: Entries through the June 3–4, 2026 VS Code / Copilot Chat session are attributed to **Copilot**. Subsequent entries (from June 6, 2026 onward) are attributed to **Cursor**.*
+
 **User (Katharsis-s):** Can you create a new file that automatically updates with our exact chat transcripts throughout development? Be sure to note who said what between you (Copilot) and me (User)
 
 **Copilot:** Created `DEVELOPMENT_TRANSCRIPT.md` file for tracking all development conversations. The protocol is: after each exchange between User and Copilot, the conversation will be added to this file after every prompt, maintaining a chronological record with clear User/Copilot attribution. This ensures complete transparency of your distant coding methodology throughout the development process.
@@ -73,6 +75,94 @@ During the initial development phase (~4 prompts), the following work was comple
 - Removed tagline paragraph from HTML header
 - Updated subtitle to "Explore Enron Emails With A DH-Friendly Interface"
 - Header now displays only title and subtitle, providing cleaner visual hierarchy
+
+---
+
+**User (Katharsis-s):** Minor edit: can you update the heights of the reset button and "Saved in Kenneth Lay's Folder?" box to match the heights of the To and From dropdown inputs?
+
+**Cursor:** Updated [`styles.css`](styles.css) so the filter row controls line up:
+
+1. **Shared height** — From/To selects, the checkbox box, and the reset button all use `min-height: 46px` via a `--filter-control-height` variable on `.filter-row`.
+2. **Reset button** — `border-width: 2px` (was 3px) to match the dropdowns, with flex centering so the label stays vertically centered.
+3. **Checkbox box** — Horizontal padding only (`0 12px`) so height comes from `min-height` instead of extra vertical padding.
+4. **Alignment** — Invisible spacer above the reset button (same size as the From/To labels) so it sits on the same row as the dropdowns.
+
+Refresh your `npx serve` page to see the change. If anything still looks off in your browser, say which one and we can nudge the height.
+
+---
+
+**User (Katharsis-s):** It changed the positions, when I wanted the height dimensions to be updated
+
+**Cursor:** Sorry about that — the last pass moved things around with flex layout and a hidden label spacer. I reverted all of that.
+
+The only change now is a fixed **height** on the two controls you called out:
+
+```css
+.filter-row .checkbox-wrapper,
+.filter-row .btn-reset {
+    height: 46px;
+    box-sizing: border-box;
+}
+```
+
+The From/To dropdowns are untouched, and layout/positioning is back to how it was (`align-items: flex-end` on the button group, `justify-content: center` on the checkbox group, original padding).
+
+Refresh and check — if the checkbox box or button still looks a pixel or two off compared to the dropdowns in your browser, tell me and we can nudge the `46px` value without touching layout again.
+
+---
+
+**User (Katharsis-s):** The reset button looks good, but the outline box around the saved folders checkbox still looks larger than its neighboring inputs
+
+**Cursor:** The checkbox box was ending up taller than the dropdowns because it still had **12px vertical padding** on top of the checkbox and label. That pushed its natural size above 46px even with a fixed height set.
+
+The reset button didn't have that problem — its text sits on one line with symmetric padding, so 46px already looked right.
+
+**Change:** only the checkbox wrapper in the filter row now uses horizontal padding (`0 12px`) and a strict 46px height (`min`/`max` as well), so the bordered box matches the From/To inputs without moving anything.
+
+Refresh and check — it should line up with the dropdowns now. If it's still slightly off in your browser, we can nudge the height by a pixel or two.
+
+---
+
+**User (Katharsis-s):** It still looks off but I think it has to do with the position. I think I found the issue: the padding between the saved box and the label is much smaller than its neighbors
+
+**Cursor:** That was it. The From/To labels use `margin-bottom: 5px` from `.filter-group label`, but the saved-folder label had a override setting `margin-bottom: 0`, which pulled the checkbox box up closer to its label.
+
+I removed that override, so it now gets the same **5px** gap as the dropdown columns. Refresh and the saved box should sit at the same vertical rhythm as its neighbors.
+
+---
+
+**User (Katharsis-s):** On second look, the saved box and reset button heights are still just slightly taller. I've attached a screenshot for reference
+
+**Cursor:** Two things were causing the mismatch in your screenshot:
+
+1. **Height** — The saved box and reset button were locked at **46px**, but the From/To dropdowns were naturally shorter. All four now share one height (`43px`) via a CSS variable, so their outer edges line up.
+
+2. **Position** — The saved column used flexbox with `justify-content: center`, which vertically centered the label + box in the grid cell. That made the label sit closer to the box than the From/To labels. It's now plain block layout like the other columns, so the **5px** label gap matches.
+
+The reset button border in that row is also **2px** (same as the dropdowns) so it doesn't read as slightly bulkier.
+
+Refresh and check — all four controls should align on top and bottom now. If it's still off by a pixel in your browser, we can nudge `--filter-control-height` to `42px` or `44px`.
+
+---
+
+**User (Katharsis-s):** Should I refer to you as Cursor instead of Copilot in the transcript from now on?
+
+**Cursor:** Yes — **from now on, Cursor is the more accurate label** for exchanges in this repo, since you're working here with Cursor's agent, not VS Code Copilot Chat.
+
+I'd keep the transcript **historically honest** rather than renaming everything:
+
+| Period | Label to use |
+|--------|----------------|
+| Lost session + early log entries (June 3–4, VS Code/Copilot) | **Copilot** — that's what actually happened |
+| New entries from this Cursor session onward | **Cursor** (or **Cursor Agent** if you want to be extra explicit) |
+
+Your file already reflects that split in spirit: the Missing Session Notice says "VS Code / Copilot Chat," while recent work happened here in Cursor.
+
+For a DH transparency log, that distinction is a **feature**, not a problem — it shows you switched tools mid-project, which is normal in distant coding workflows.
+
+**Practical convention going forward:** use `**User (Katharsis-s):**` and `**Cursor:**` for new entries.
+
+**Don't** blanket-replace "Copilot" with "Cursor" in older entries unless those conversations actually happened in Copilot — that would weaken the log's accuracy.
 
 ---
 
