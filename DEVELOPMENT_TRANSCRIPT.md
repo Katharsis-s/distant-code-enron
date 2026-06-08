@@ -166,4 +166,84 @@ For a DH transparency log, that distinction is a **feature**, not a problem — 
 
 ---
 
+**User (Katharsis-s):** One big part of my DH project is its UX design. I read a paper that has remixed Jakob Nielsen's UX Heuristics based on what's most pertinent and relevant to the digital humanities. I've synthesized the reading into the following list; can you assess my current project and suggest edits?
+
+1. Respect the Medium: consider multimodality and employing creative structure beyond blocks of text
+2. Invest in Thoughtful Information Architecture: clean backend
+3. Treat the Homepage as the Project's Abstract: important info on the homepage
+4. Consider the Role of Delight: engage the senses in a fun way (color palette, logo design)
+5. Strive for Inclusivity: digestible verbiage, less jargon
+6. Avoid Feature Creep: less is more, ensure everything is relevant to goals
+7. Take Extra Care with Data Visualization: clear and legible data viz
+8. Eliminate Unexpected Page Behaviors: give users more choice over redirects with popups (e.g. no automatic downloads or redirects without warning)
+9. Build Accessible Projects: provide captions, transcripts, color choices that even the colorblind can see, screen reader accessible, attention/sensory needs
+10. Emphasize Project Development Rather than Deficiencies: Include a project timeline/vision page, and provide a CTA
+
+**Cursor:** Assessed the project against all 10 heuristics. Strong on Delight (#4) and Avoid Feature Creep (#6). Main gaps: Accessibility (#9), export confirmation (#8), homepage-as-abstract (#3), and on-site development transparency (#10). Proposed a balanced pass: reframe Dataset Info, accessibility fixes (reduced motion, modal ARIA/keyboard, skip link, button semantics), export confirmation modal, and project subpages — without bar chart, date filter, or high-contrast toggle.
+
+---
+
+**User (Katharsis-s):** Great. Quick notes:
+1. Ignore the count-by-year bar chart. Implement reframing the Dataset Info Box. I'm curious to see how it looks. I HATE how smushed the bullet points are
+2. Ignore, the backend is clean enough. I manually compiled everything myself from the original corpus, so anything beyond that is overkill at this time
+3. I like where this is going. It would probably bundle in with the accepted change from principle #1
+4. I agree abouut your note of not stripping the aesthetic (I personally found the blinking to be distracting, but I didn't want to intervene without justification without literature). Ignore the optional one-line note
+5. I see where you're going with this, but I am expecting a bit of insider knowledge at this time. The subset is so small, I would rather it not be too publicly accessible outside my classroom at this time. Ignore all 3 suggestions
+6. Ignore all 3 suggestions. It's been met
+7. The sort filtered results by date is already automatically sorted oldest -> newest. Since there's only 47 entries, I don't think it would make a bit difference to add a separate sort button. Ignore the other 2
+8. Sure, replace instant download with a confirmation step (I like the small modal idea). Implement suggestions #2 and 3 as well
+9. You're so right, let's implement all your suggestions. Can't do the oprtional high contrast toggle today since time is tight
+10. Yes, the ultimate goal is to have the transcript available on a separate subpage within the site for full transparency that audiences can scroll through. I like your idea of a Project Development section (again, separate subpage). I'm intruued by the short timeline and vision line idea (the vision is to expand the subset to more than 47 entries). Ignore the CTA at this time. I guess we can add a placeholder for that? Or a dummy button
+
+(also, add this and the "One big part ..." correspondence to the deployment transcript please)
+
+**Cursor:**
+- Reframed homepage info box into Project Overview sections (Research Focus, Scope, Key People, Methods, How to Use) with expanded list spacing in [`styles.css`](styles.css)
+- Added site navigation and footer links to [`development.html`](development.html) and [`transcript.html`](transcript.html)
+- Replaced instant JSON export with confirmation modal; export control is now a `<button>`
+- Implemented accessibility pass: skip link, modal `role="dialog"`/`aria-modal`, Escape to close, focus return, event delegation for VIEW buttons with `aria-label`, `:focus` styles, `@media (prefers-reduced-motion: reduce)` disabling blink and animations
+- External data source links use `target="_blank"` and `rel="noopener noreferrer"`
+- Created [`development.html`](development.html) with timeline, vision, placeholder "Send Feedback (Coming Soon)" button
+- Created [`transcript.html`](transcript.html) as scrollable transparency log mirroring this file
+
+---
+
+**User (Katharsis-s):** Great. Quick notes:
+- For the Project Overview section, I'm looking for a file folder-like design (organized by subheader). Right now I don't like how it's expanded like that
+- I'm a tad disappointed by transcript.html. I wanted an exact transcription from DEVELOPMENT_TRANSCRIPT.md. It just seems oversanitized, especially the way it summarized my last prompt (a detailed list addressing each DH UX Heuristic assesssment). And for the transcript log section, I want you to combine it more like a linked page that someone can scroll through. It's too expanded
+
+(again, do note this in transcript)
+
+**Cursor:**
+- Redesigned Project Overview as folder tabs (Research Focus, Scope, Key People, Methods, How to Use) — one pane visible at a time, 90s manila-folder tab styling
+- Rebuilt [`transcript.html`](transcript.html) to load and render [`DEVELOPMENT_TRANSCRIPT.md`](DEVELOPMENT_TRANSCRIPT.md) verbatim via [`transcript.js`](transcript.js); compact scrollable document layout with section jump links
+- Restored exact wording of the numbered UX implementation directive in this file (replacing prior summarized version)
+- Appended this exchange to the transcript
+
+---
+
+**User (Katharsis-s):** I can't say I'm a major fan of how you've formatted the live transcript in transcript.html. I prefer the look of the .md text file like in DEVELOPMENT_TRANSCRIPT.md and having users scroll through it within a fixed container. Right now it's too fanned out
+
+**Cursor:** Replaced HTML rendering with a plain-text view: [`transcript.js`](transcript.js) now loads `DEVELOPMENT_TRANSCRIPT.md` verbatim into a monospace `<pre>` inside a fixed-height scroll box (`.transcript-viewport`). Removed parsed headings, lists, and expanded spacing so the page reads like the markdown file itself.
+
+---
+
+**User (Katharsis-s):** Great, I much prefer the look of that. Can you also have it display the preview version of the .md?
+
+**Cursor:** Added **Source** / **Preview** tabs on [`transcript.html`](transcript.html). Source keeps the raw monospace `.md` text; Preview renders the same file as formatted markdown (headings, lists, bold, code blocks, tables) inside the same fixed scroll container with compact preview styling.
+
+---
+
+**User (Katharsis-s):** Can we swap the places of preview and source?
+
+**Cursor:** Swapped tab order on [`transcript.html`](transcript.html) — **Preview** is now the left tab and opens by default; **Source** is second.
+
+---
+
+**User (Katharsis-s):** Great. I actually prefer the color scheme of the manila folder in transcript.html. Can you update the research context manila folder from the homepage to match?
+
+**Cursor:** Updated homepage Project Overview folder styles in [`styles.css`](styles.css) to match the transcript tabs: inactive tabs `#ffdd66`, active tab white with red text, folder body white. Removed extra offset, shadow, and hover styles for a consistent manila-folder look across both pages.
+
+---
+
 *New exchanges will be appended below in chronological order.*

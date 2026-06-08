@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#filter-panel" class="skip-link">Skip to search</a>
+
     <div class="container">
         <!-- HEADER -->
         <header class="header">
@@ -19,22 +21,53 @@
             </div>
         </header>
 
-        <!-- NAVIGATION & INFO -->
-        <nav class="info-bar">
-            <div class="info-box">
-                <strong>📌 DATASET INFO</strong><br>
-                <small>The original corpus contains 500K+ emails. This project focuses only on a subset, specifically the email correspondence between Ken Lay (former CEO of Enron) and his daughter, Elizabeth Lay. Some additional things to note:
+        <nav class="site-nav" aria-label="Site navigation">
+            <a href="index.html" class="site-nav-link site-nav-link--active" aria-current="page">Browse Corpus</a>
+            <a href="development.html" class="site-nav-link">Project Development</a>
+            <a href="transcript.html" class="site-nav-link">Development Transcript</a>
+        </nav>
+
+        <!-- PROJECT ABSTRACT / DATASET INFO -->
+        <nav class="info-bar" aria-label="Project overview">
+            <div class="folder-panel">
+                <p class="folder-panel-label"><b>📌 PROJECT OVERVIEW</b></p>
+                <div class="folder-tabs" role="tablist" aria-label="Project overview sections">
+                    <button type="button" class="folder-tab folder-tab--active" role="tab" id="tab-research" aria-selected="true" aria-controls="folder-research" data-folder="research">Research Focus</button>
+                    <button type="button" class="folder-tab" role="tab" id="tab-scope" aria-selected="false" aria-controls="folder-scope" data-folder="scope">Scope</button>
+                    <button type="button" class="folder-tab" role="tab" id="tab-people" aria-selected="false" aria-controls="folder-people" data-folder="people">Key People</button>
+                    <button type="button" class="folder-tab" role="tab" id="tab-methods" aria-selected="false" aria-controls="folder-methods" data-folder="methods">Methods</button>
+                    <button type="button" class="folder-tab" role="tab" id="tab-howto" aria-selected="false" aria-controls="folder-howto" data-folder="howto">How to Use</button>
+                </div>
+                <div class="folder-body">
+                    <div class="folder-pane folder-pane--active" id="folder-research" role="tabpanel" aria-labelledby="tab-research">
+                        <h3 class="folder-pane-title">Research Focus</h3>
+                        <p>This project explores personal email correspondence between Kenneth Lay (former CEO of Enron) and his daughter Elizabeth Lay from 1999–2002.</p>
+                    </div>
+                    <div class="folder-pane" id="folder-scope" role="tabpanel" aria-labelledby="tab-scope" hidden>
+                        <h3 class="folder-pane-title">Scope</h3>
+                        <p>The original Enron Email Corpus contains 500K+ emails. This project is powered by a manually compiled subset of <strong>47 emails</strong> drawn from the Lay family correspondence.</p>
+                    </div>
+                    <div class="folder-pane" id="folder-people" role="tabpanel" aria-labelledby="tab-people" hidden>
+                        <h3 class="folder-pane-title">Key People</h3>
                         <ul>
-                            <li>Rosie Flemming is Ken Lay's executive assistant, and she always replies on his behalf (yes, even with his own daughter)</li>
-                            <li>Elizabeth uses three emails: elizabeth.lay@enron.com (work), lizard.ar@yahoo.com (personal), and ealvittor@yahoo.com (personal - married surname). There's also an anomaly hidden in there.</li>
-                            <li>The subset was manually pulled from the <a href = "https://www.kaggle.com/datasets/wcukierski/enron-email-dataset/data">.csv version</a> of the original email corpus. It only took a few hours</li>
+                            <li><strong>Rosie Flemming</strong> is Ken Lay's executive assistant. She always replies on his behalf (yes, even with his own daughter).</li>
+                            <li><strong>Elizabeth Lay</strong> uses three emails: elizabeth.lay@enron.com (work), lizard.ar@yahoo.com (personal), and ealvittor@yahoo.com (personal — married surname). There's also an anomaly hidden in there due to an unexplained blip.</li>
                         </ul>
-                </small>
+                    </div>
+                    <div class="folder-pane" id="folder-methods" role="tabpanel" aria-labelledby="tab-methods" hidden>
+                        <h3 class="folder-pane-title">Methods</h3>
+                        <p>The subset was manually pulled from the <a href="https://www.kaggle.com/datasets/wcukierski/enron-email-dataset/data" target="_blank" rel="noopener noreferrer">.csv version</a> of the original email corpus. It only took a few hours to capture and clean.</p>
+                    </div>
+                    <div class="folder-pane" id="folder-howto" role="tabpanel" aria-labelledby="tab-howto" hidden>
+                        <h3 class="folder-pane-title">How to Use This Site</h3>
+                        <p>Search and filter below, then click <strong>VIEW</strong> to read a full email. You can export filtered results as JSON for use in other research tools.</p>
+                    </div>
+                </div>
             </div>
         </nav>
 
         <!-- SEARCH & FILTER PANEL -->
-        <div class="filter-panel">
+        <div class="filter-panel" id="filter-panel">
             <h2 class="filter-title">🔍 SEARCH & FILTER</h2>
 
             <div class="filter-group">
@@ -66,7 +99,7 @@
                 </div>
 
                 <div class="filter-group button-group">
-                    <button id="resetBtn" class="btn btn-reset">↻ RESET FILTERS</button>
+                    <button type="button" id="resetBtn" class="btn btn-reset">↻ RESET FILTERS</button>
                 </div>
             </div>
 
@@ -95,16 +128,16 @@
                 </table>
             </div>
             <div class="export-link">
-                <a href="#" id="exportLink">💾 Export filtered results as JSON</a>
+                <button type="button" id="exportBtn" class="btn btn-export">💾 Export filtered results as JSON</button>
             </div>
         </div>
 
         <!-- EMAIL VIEWER MODAL -->
-        <div id="emailModal" class="modal hidden">
+        <div id="emailModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalSubject" aria-hidden="true">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 id="modalSubject"></h2>
-                    <button class="close-btn" id="closeModal">&times;</button>
+                    <button type="button" class="close-btn" id="closeModal" aria-label="Close email viewer">&times;</button>
                 </div>
                 <div class="modal-meta">
                     <p><strong>Message-ID:</strong> <code id="modalMessageId"></code></p>
@@ -119,9 +152,26 @@
             </div>
         </div>
 
+        <!-- EXPORT CONFIRMATION MODAL -->
+        <div id="exportModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="exportModalTitle" aria-hidden="true">
+            <div class="modal-content modal-content--compact">
+                <div class="modal-header">
+                    <h2 id="exportModalTitle">Confirm Export</h2>
+                    <button type="button" class="close-btn" id="closeExportModal" aria-label="Close export confirmation">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="exportModalMessage">Download filtered results as JSON?</p>
+                    <div class="modal-actions">
+                        <button type="button" id="confirmExportBtn" class="btn btn-export">Download JSON</button>
+                        <button type="button" id="cancelExportBtn" class="btn btn-reset">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- FOOTER -->
         <footer class="footer">
-            <p>An ENG 470 Capstone Project | Data Source: <a href ="https://www.cs.cmu.edu/~enron/">Enron Email Corpus</a> (<a href ="https://www.kaggle.com/datasets/wcukierski/enron-email-dataset/data">CSV Version</a>)</p>
+            <p>An ENG 470 Capstone Project | Data Source: <a href="https://www.cs.cmu.edu/~enron/" target="_blank" rel="noopener noreferrer">Enron Email Corpus</a> (<a href="https://www.kaggle.com/datasets/wcukierski/enron-email-dataset/data" target="_blank" rel="noopener noreferrer">CSV Version</a>)</p>
             <p class="footer-small">For educational and research purposes</p>
         </footer>
     </div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Transcript | Distant Code: Enron Emails</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-inner">
+                <h1 class="title">DEVELOPMENT TRANSCRIPT</h1>
+                <p class="subtitle">Complete Transparency Log of AI-Assisted Development</p>
+            </div>
+        </header>
+
+        <nav class="site-nav" aria-label="Site navigation">
+            <a href="index.html" class="site-nav-link">Browse Corpus</a>
+            <a href="development.html" class="site-nav-link">Project Development</a>
+            <a href="transcript.html" class="site-nav-link site-nav-link--active" aria-current="page">Development Transcript</a>
+        </nav>
+
+        <main id="main-content" class="subpage-content transcript-page">
+            <p class="transcript-source-note">Source: <code>DEVELOPMENT_TRANSCRIPT.md</code></p>
+
+            <div class="transcript-mode-tabs" role="tablist" aria-label="Transcript display mode">
+                <button type="button" class="transcript-mode-tab transcript-mode-tab--active" role="tab" id="tab-preview" aria-selected="true" aria-controls="transcript-preview" data-mode="preview">Preview</button>
+                <button type="button" class="transcript-mode-tab" role="tab" id="tab-source" aria-selected="false" aria-controls="transcript-source" data-mode="source">Source</button>
+            </div>
+
+            <div class="transcript-viewport">
+                <div id="transcript-preview" class="transcript-preview transcript-panel transcript-panel--active" role="tabpanel" aria-labelledby="tab-preview"></div>
+                <pre id="transcript-source" class="transcript-raw transcript-panel" role="tabpanel" aria-labelledby="tab-source" tabindex="0" hidden>Loading transcript...</pre>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>An ENG 470 Capstone Project | <a href="index.html">Back to Corpus Browser</a></p>
+            <p class="footer-small">For educational and research purposes</p>
+        </footer>
+    </div>
+
+    <script src="transcript.js"></script>
+</body>
+</html>
